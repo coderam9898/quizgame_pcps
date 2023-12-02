@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div id="maincon" class="container mx-auto flex min-h-screen flex-col items-center justify-center p-4">
+        <h1 class="mb-4 text-2xl font-bold">Quiz Game : Level <span id="gamelevel">1</span> </h1>
+        <div class="flex gap-8">
+            <h1 class="mb-4 text-2xl font-bold">Score :<span id="score"></span></h1>
+            <h1 class="mb-4 text-2xl font-bold">Question no : <span id="counter"></span>/<span id="tquestions"></span>
+            </h1>
+            <h1 class="mb-4 text-2xl font-bold">Time left : <span id="timer">00:00</span> </h1>
+        </div>
+        <div id="question" class="container mx-auto flex h-auto w-[60%] items-center justify-center border shadow-lg">
+            <img id="quiz-image" class="mb-4 h-auto w-auto"
+                src="https://www.sanfoh.com/uob/tomato/data/t550a9dcdf9d87cfb1504609f49n693.png" />
+        </div>
+        <span class="mt-4 text-2xl font-extrabold text-green-400">Select your answer</span>
+        <div class="mt-4 flex h-auto w-full gap-4 rounded-lg border bg-gray-100 p-4 shadow-lg">
+            <button onclick="test(0)"
+                class="aspect-square w-full rounded-2xl border bg-red-400 text-center text-2xl font-bold text-white hover:text-black hover:shadow-lg">0</button>
+            <button onclick="test(1)"
+                class="aspect-square w-full rounded-2xl border bg-red-400 text-center text-2xl font-bold text-white hover:text-black hover:shadow-lg">1</button>
+            <button onclick="test(2)"
+                class="aspect-square w-full rounded-2xl border bg-red-400 text-center text-2xl font-bold text-white hover:text-black hover:shadow-lg">2</button>
+            <button onclick="test(3)"
+                class="aspect-square w-full rounded-2xl border bg-red-400 text-center text-2xl font-bold text-white hover:text-black hover:shadow-lg">3</button>
+            <button onclick="test(4)"
+                class="aspect-square w-full rounded-2xl border bg-red-400 text-center text-2xl font-bold text-white hover:text-black hover:shadow-lg">4</button>
+            <button onclick="test(5)"
+                class="aspect-square w-full rounded-2xl border bg-red-400 text-center text-2xl font-bold text-white hover:text-black hover:shadow-lg">5</button>
+            <button onclick="test(6)"
+                class="aspect-square w-full rounded-2xl border bg-red-400 text-center text-2xl font-bold text-white hover:text-black hover:shadow-lg">6</button>
+            <button onclick="test(7)"
+                class="aspect-square w-full rounded-2xl border bg-red-400 text-center text-2xl font-bold text-white hover:text-black hover:shadow-lg">7</button>
+            <button onclick="test(8)"
+                class="aspect-square w-full rounded-2xl border bg-red-400 text-center text-2xl font-bold text-white hover:text-black hover:shadow-lg">8</button>
+            <button onclick="test(9)"
+                class="aspect-square w-full rounded-2xl border bg-red-400 text-center text-2xl font-bold text-white hover:text-black hover:shadow-lg">9</button>
+        </div>
+        <!-- <button type="button" id="checkbtn" onclick="test()" class="mt-4 w-full border bg-red-300 p-2 px-4 text-2xl font-extrabold hover:text-green-600" on>Next</button> -->
+        <div class="mt-4 border-2 p-4 text-center hidden"><span class="text-2xl font-extrabold text-green-800">hint:
+            </span><span id="options" class="text-2xl font-extrabold text-blue-800"></span></div>
+
+        <!-- model box -->
+        <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50 hidden" id="modal">
+            <div class="absolute top-0 left-0 w-full h-full bg-gray-900 opacity-50"></div>
+            <div class="bg-white rounded p-8 shadow-lg z-50 px-20 border-2 border-red-400 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold mb-4" id="modeltitle">Modal
+                    Title</h2>
+                <p id="message">Modal content goes here.</p>
+                <div class="flex items-center justify-between gap-2">
+
+                    <button id="closeModal" onclick="closemodel()"
+                        class="mt-4 w-full px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Next</button>
+                    <button id="quit" onclick="des()"
+                        class="mt-4 w-full px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Quit</button>
+                </div>
+
+            </div>
+        </div>
+        <!-- model end -->
+    </div>
+
+
+
+    <script>
+        // Fetch data from the API
+        let apidata;
+        let score = 0;
+        let start = false;
+        let count = 1;
+        let gameover = false;
+        let gml = 1
+        let totalquestions = 10
+        let closeModal = document.getElementById('closeModal')
+
+
+
+        // Example: Read the value of a cookie named "exampleCookie"
+        const exampleCookieValue = getCookie("gamelevel");
+
+        if (exampleCookieValue !== null) {
+            console.log("Value of exampleCookie:", exampleCookieValue);
+
+            gml = exampleCookieValue;
+        } else {
+            console.log("Cookie not found.");
+        }
+
+        totalquestions = gml * 5;
+
+
+        document.getElementById("maincon").addEventListener("load", getdata());
+        document.getElementById('gamelevel').innerText = gml;
+        document.getElementById("tquestions").innerHTML = totalquestions;
+
+        const timerElement = document.getElementById("timer");
+        const initialTime = (gml * 2) * 60; // 10 minutes in seconds
+        let currentTime = initialTime;
+
+        function updateTimer() {
+            const minutes = Math.floor(currentTime / 60);
+            const seconds = currentTime % 60;
+
+            const displayMinutes = minutes < 10 ? "0" + minutes : minutes;
+            const displaySeconds = seconds < 10 ? "0" + seconds : seconds;
+
+            timerElement.innerText = displayMinutes + ":" + displaySeconds;
+
+            if (currentTime <= 0) {
+                clearInterval(timerInterval);
+                timerElement.innerText = "00:00"; // Timer reached zero
+
+                location.replace("{% url 'game' %}");
+            } else {
+                currentTime--;
+            }
+        }
+
+        const timerInterval = setInterval(updateTimer, 1000); // Update timer every second
+
+        // Function to get the value of a cookie by name
+        function getCookie(name) {
+            const cookies = document.cookie.split('; ');
+
+            for (const cookie of cookies) {
+                const [cookieName, cookieValue] = cookie.split('=');
+
+                if (cookieName === name) {
+                    return decodeURIComponent(cookieValue);
+                }
+            }
+
+            return null; // Return null if the cookie with the specified name is not found
+        }
+
+
+
+
+        function getdata() {
+            fetch("https://marcconrad.com/uob/tomato/api.php")
+                .then(response => response.json())
+                .then(data => {
+                    apidata = data;
+                    console.log(data);
+                    // console.log(data.question);
+                    // console.log(data.solution);
+                    // Data is already a JavaScript object, not JSON, so you can use it directly
+                    const imgElement = document.getElementById("quiz-image");
+                    imgElement.src = data.question;
+                    const Opt = document.getElementById("options");
+                    Opt.innerHTML = data.solution;
+                    document.getElementById("score").innerHTML = score;
+                    document.getElementById("counter").innerHTML = count;
+
+                    document.getElementById("ans").value = "";
+                    // if (start == true) {
+
+                    //     document.getElementById("getbtn").classList.add("hidden");
+                    // }
+
+
+                })
+                .catch(error => {
+                    console.error("Error fetching data: " + error);
+                });
+        }
+
+        function checkover() {
+            if (count >= totalquestions + 1) {
+                gameover = true;
+            }
+            else {
+                gameover = false;
+            }
+        }
+
+
+        function updateScore() {
+            score++;
+            //   scoreElement.textContent = score;
+        }
+
+
+        function counter() {
+            count++;
+        }
+        function des() {
+            document.getElementById("modal").classList.toggle("hidden");
+            location.replace("{% url 'game' %}");
+        }
+
+        function closemodel() {
+            document.getElementById("modal").classList.toggle("hidden");
+            if (gameover) {
+                closeModal.classList.toggle('hidden');
+                alertbox("GameOver!!", "Total score : " + " " + score);
+                const gameActivityData = {
+                    userId: "ajay@gmail.com",
+                    score: score,
+                    quizLevel: gml,
+                    // Add more relevant data fields as needed
+                };
+
+                sendGameActivityData(gameActivityData);
+                console.log("gave activity sent")
+                setTimeout(function () {
+                    location.replace("{% url 'game' %}");
+                    // location.replace("http://127.0.0.1:5500/index.html");
+                }, 2000);
+
+
+            }
+            else {
+                getdata();
+            }
+            // location.reload();
+
+        }
+
+        function timer() {
+
+        }
+
+        function alertbox(atitle, amessage) {
+            document.getElementById("modeltitle").innerHTML = atitle;
+            document.getElementById("message").innerHTML = amessage;
+            document.getElementById("modal").classList.toggle("hidden");
+        }
+
+        function go() {
+            if (count >= 5) {
+                alertbox("GameOver!!", "Time Up!!");
+                // gameover = true;
+                // closemodel();
+            }
+            else {
+                test();
+            }
+        }
+
+        function test(choice) {
+            // alertbox("Correct!!", "Your answer is coorect!");
+            // let ans = document.getElementById("ans").value;
+            let ans = Number(choice);
+            console.log(choice)
+            if (ans !== undefined && ans !== null) { // Check if ans is defined and not null
+                if (ans === apidata.solution) {
+                    updateScore();
+                    counter();
+                    checkover();
+                    alertbox("Correct!!", "Your answer is correct!");
+                } else {
+                    counter();
+                    checkover();
+                    alertbox("Sorry!!! incorrect", "Your answer is incorrect!");
+                }
+            } else {
+                alertbox("ERROR", "Value Not Provided!!");
+            }
+        }
+
+        <!-- Include this script in your HTML file -->
+        // Function to send data to the Django API
+        function sendDataToAPI() {
+            // Replace 'your-api-endpoint' with the actual URL of your Django API endpoint
+            const apiUrl = '/your-api-endpoint/';
+
+            // Replace with the actual data you want to send
+            const data = {
+                student_id: 1,
+                level_achieved: 5,
+                total_questions: 20,
+                score: 80,
+                remarks: 'Great job!'
+            };
+
+            // Fetch API request
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Success:', data);
+                    // Handle success response
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    // Handle error
+                });
+        }
+
+        // Call the function when needed, for example, when a button is clicked
+        document.getElementById('sendDataButton').addEventListener('click', sendDataToAPI);
+
+
+
+        // Function to send game activity data to the server
+        function sendGameActivityData(activityData) {
+            // Replace 'https://your-server/api/endpoint' with the actual URL of your server's API endpoint
+            const apiUrl = 'http://127.0.0.1:8000/api/savelevel';
+
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(activityData),
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Response from server:', data);
+                    // Handle the response from the server if needed
+                })
+                .catch(error => {
+                    console.error('Error:', error.message);
+                    // Handle errors or display an error message to the user
+                });
+        }
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!-- Put your content inside of the <main/> tag -->
+<h1 class="text-2xl  font-black text-gray-800 uppercase">{{request.user}}'s🎮 History</h1>
+<p class="mb-6  text-gray-600">👏Keep Playing , score better👏</p>
+<div class="flex flex-wrap gap-x-4 gap-y-8">
+    <div id="leaderboard" class="w-full bg-white p-10 shadow-md  h-[100vh] overflow-auto px-4 py-10">
+        
+            <table class="w-full" id="">
+                <thead>
+                  <tr class="bg-green-300 text-left  font-extrabold uppercase tracking-widest text-Black">
+                    <th class="px-5 py-3">Date</th>
+                    <th class="px-5 py-3">Level</th>
+                    <th class="px-5 py-3">📃 Total Questions </th>
+                    <th class="px-5 py-3">Score 🏆</th>
+                    <th class="px-5 py-3">Remarks</th>
+                  </tr>
+                </thead>
+                <tbody class="text-gray-500">
+                  {% for h in history %}
+                  <tr>
+                    <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                      <p class="whitespace-no-wrap">{{h.gamedate}}</p>
+                    </td>
+                    <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                      <span class="rounded-full bg-yellow-200 px-3 py-1 text-xs font-semibold text-yellow-900">Level {{h.level_achieved}}</span>
+                    </td>
+                    <td class="border-b border-gray-200 bg-white  px-5 py-5 text-sm">
+                      <span class="rounded-full bg-blue-200 px-3 py-1 text-xs font-semibold text-green-900">📃{{h.total_questions}}</span>
+                    </td>
+                    <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                      <span class="rounded-full bg-green-200 px-3 py-1 text-xs font-semibold text-green-900">{{h.score}}🏆</span>
+                    </td>
+                    <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                      <span class="rounded-full bg-green-200 px-3 py-1 text-xs font-semibold text-green-900">{{h.remarks}}👏</span>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                  
+                </tbody>
+              </table>
+              <script>
+                // Function to insert n number of rows
+                function insertRows(n) {
+                  var tableBody = document.getElementById('myTableBody');
+              
+                  for (var i = 0; i < n; i++) {
+                    var newRow = document.createElement('tr');
+              
+                    // Sample content for each cell, modify as needed
+                    newRow.innerHTML = `
+                      <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                        <p class="whitespace-no-wrap">2023-11- ${i + 1}</p>
+                      </td>
+                      <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                        <span class="rounded-full bg-yellow-200 px-3 py-1 text-xs font-semibold text-yellow-900">Level ${i + 1}</span>
+                      </td>
+                      <td class="border-b border-gray-200 bg-white  px-5 py-5 text-sm">
+                        <span class="rounded-full bg-blue-200 px-3 py-1 text-xs font-semibold text-green-900">📃${i + 1}</span>
+                      </td>
+                      <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                        <span class="rounded-full bg-green-200 px-3 py-1 text-xs font-semibold text-green-900">${i + 1}🏆</span>
+                      </td>
+                      <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                        <span class="rounded-full bg-green-200 px-3 py-1 text-xs font-semibold text-green-900">Very Good👏</span>
+                      </td>
+                    `;
+              
+                    // Append the new row to the table body
+                    tableBody.appendChild(newRow);
+                  }
+                }
+              
+                // Insert 3 rows as an example, you can change the number as needed
+                insertRows(4);
+              </script>
+        
+    </div>
+    <!-- <div class="h-56 w-full rounded-xl bg-white p-10 shadow-md"></div> -->
+</div>

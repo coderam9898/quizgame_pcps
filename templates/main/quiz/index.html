@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css">
+    </head>
+    <body>
+        <div class="flex items-center justify-between p-2 mr-8">
+            <div class="flex font-extrabold">Quizzer</div>
+            <div class="flex gap-2">
+              <img src="https://rkmahato.com.np/images/Profile.png" class="flex aspect-square h-8 w-auto items-center rounded-full border-2 border-white bg-gray-200 object-contain shadow-lg" alt="" />
+              <span class="flex items-center justify-center">{{user}}</span>
+              <a href="{% url 'logout_view'%}" class="flex items-center justify-center">Logout</a>
+
+            </div>
+          </div>
+          
+        <div
+            class="container mx-auto p-4 min-h-screen flex flex-col items-center justify-center">
+            <Span class="font-extrabold text-4xl">Hello :  {{user}} User</Span>
+            <Span class="font-extrabold text-4xl">Welcome to quizzer</Span>
+            <button onclick="startgame()" class="border px-4 py-2 bg-red-600 mt-8 rounded-lg text-white font-extrabold text-white">Start Quiz</button>
+            <a href="{% url 'logout_view'%}" class="border px-4 py-2 bg-gray-600 mt-8 rounded-lg text-white font-extrabold text-white">Logout</a>
+            <!-- model box -->
+            <div
+                class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50 hidden"
+                id="modal">
+                <div
+                    class="absolute top-0 left-0 w-full h-full bg-gray-900 opacity-50"></div>
+                <div class="bg-white rounded p-8 shadow-lg z-50">
+                    <h2 class="text-2xl font-bold mb-4" id="modeltitle">Modal
+                        Title</h2>
+                    <p id="message">Modal content goes here.</p>
+                    <button id="closeModal" onclick="closemodel()"
+                        class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Close</button>
+                </div>
+            </div>
+            <!-- model end -->
+        </div>
+        <script>
+            function startgame(){
+                // location.replace("http://127.0.0.1:5500/home.html");
+                // location.replace("http://127.0.0.1:5500/test.html");
+                location.replace("{% url 'play' %}");
+            }
+            
+        </script>
+
+        
+    </body>
+</html>

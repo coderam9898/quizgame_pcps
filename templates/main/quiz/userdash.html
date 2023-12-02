@@ -1,0 +1,255 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %} User Dashboard {% endblock title%}
+{% block content %}
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;1,600&display=swap"
+    rel="stylesheet" />
+<style>
+    :root {
+        font-family: 'Source Sans Pro';
+    }
+
+    main#dashboard-main::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    main#dashboard-main::-webkit-scrollbar-thumb {
+        border-radius: 9999px;
+        background-color: rgb(156 163 175 / 0.75);
+    }
+
+    main#dashboard-main::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px rgb(156 163 175 / 0.75);
+        border-radius: 10px;
+    }
+</style>
+
+<div class="bg-slate-200 flex h-screen">
+    
+    <aside id="asidebox" class="fixed z-50 md:relative ">
+        <!-- Sidebar -->
+        <input type="checkbox" class="peer hidden" id="sidebar-open" />
+        <label
+            class="peer-checked:rounded-full peer-checked:p-2 peer-checked:right-6 peer-checked:bg-gray-600 peer-checked:text-white absolute top-8 z-20 mx-4 cursor-pointer md:hidden"
+            for="sidebar-open">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </label>
+        <nav aria-label="Sidebar Navigation"
+            class="peer-checked:w-64 left-0 z-10 flex h-screen w-0 flex-col overflow-hidden bg-gray-900 text-white transition-all md:h-screen md:w-64 lg:w-72">
+            <div class=" mt-5 py-4 pl-10 md:mt-10">
+                <span class="">
+                    <span
+                        class="mr-1 inline-flex h-8 w-8 items-center justify-center rounded-full bg-red-600 align-bottom text-2xl font-bold">Q</span>
+                    <span class="text-xl">Quizzer</span>
+                </span>
+            </div>
+            <ul class="mt-8 space-y-3 md:mt-20">
+                <li class="relative">
+                    <button
+                        class="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
+                        <span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                            </svg></span><span class="">History</span>
+                    </button>
+                </li>
+                <li class="relative">
+                    <button
+                        class="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 font-semibold focus:outline-none">
+                        <span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                            </svg> </span><span class="">Leaderboard</span>
+                    </button>
+                    <!-- <svg class="text-slate-200 absolute -right-1 -top-1/2 z-10 hidden h-32 w-8 md:block"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="399.349 57.696 100.163 402.081" width="1em"
+                        height="4em">
+                        <path fill="currentColor"
+                            d="M 499.289 57.696 C 499.289 171.989 399.349 196.304 399.349 257.333 C 399.349 322.485 499.512 354.485 499.512 458.767 C 499.512 483.155 499.289 57.696 499.289 57.696 Z" />
+                    </svg> -->
+                </li>
+                <li class="relative">
+                    <button
+                        class="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
+                        <span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                            </svg></span><span class="">Quizes</span>
+                    </button>
+                </li>
+                <li class="relative">
+                    <button
+                        class="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
+                        <span class="text-2xl"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img"
+                                width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 36 36">
+                                <path fill="currentColor"
+                                    d="M32 15h-1V9a1 1 0 0 0-1-1H6a1 1 0 0 1-1-.82v-.36A1 1 0 0 1 6 6h23.58a1 1 0 0 0 0-2H6a3 3 0 0 0-3 3a3.08 3.08 0 0 0 0 .36v20.57A4.1 4.1 0 0 0 7.13 32H30a1 1 0 0 0 1-1v-6h1a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1Zm-3 15H7.13A2.11 2.11 0 0 1 5 27.93V9.88A3.11 3.11 0 0 0 6 10h23v5h-7a5 5 0 0 0 0 10h7Zm2-7h-9a3 3 0 0 1 0-6h9Z"
+                                    class="clr-i-outline clr-i-outline-path-1" />
+                                <circle cx="23.01" cy="20" r="1.5" fill="currentColor"
+                                    class="clr-i-outline clr-i-outline-path-2" />
+                                <path fill="none" d="M0 0h36v36H0z" />
+                            </svg></span><span class="">Recommended games</span>
+                    </button>
+                </li>
+                <li class="relative">
+                    <a href="{% url 'logout_view'%}"
+                        class="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
+                        <span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                            </svg></span><span class="">Logout</span>
+                    </a>
+                </li>
+                <li class="relative">
+                    <button
+                        class="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
+                        <span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg></span><span class="">Settings</span>
+                    </button>
+                </li>
+            </ul>
+
+            <div class="my-6 mt-auto ml-10 flex cursor-pointer">
+                <div>
+                    <img class="h-12 w-12 rounded-full"
+                        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" />
+                </div>
+                <div class="ml-3">
+                    <p class="font-medium">{{user.username}}</p>
+                    <p class="text-sm text-gray-300">{{user.email}}</p>
+                </div>
+            </div>
+        </nav>
+    </aside>
+    <!-- /Sidebar -->
+
+    <div class="flex h-full w-full flex-col">
+        <!-- Navbar -->
+        <header class="relative flex flex-col items-center bg-white px-4 py-4 shadow sm:flex-row md:h-20">
+            <div
+                class="flex w-full flex-col justify-between overflow-hidden transition-all sm:max-h-full sm:flex-row sm:items-center">
+                <button onclick="sidebartoggle()">|||</button>
+                <span class="text-4xl font-bold">Quizzer 🎮</span>
+                <span>{{user.email}}</span>
+            </div>
+        </header>
+        <!-- /Navbar -->
+
+        <!-- Main -->
+        <div class="h-full overflow-hidden pl-10 ">
+            <main id="dashboard-main" class="h-[calc(100vh-10rem)] overflow-auto px-4 py-10">
+                <!-- Put your content inside of the <main/> tag -->
+                <h1 class="text-2xl font-black text-gray-800">Good Morning! {{user.email}}</h1>
+                <p class="mb-6 text-gray-600">Here's are the games that you can play!</p>
+                <div class="flex flex-wrap gap-x-4 gap-y-8">
+                    <div class="h-auto w-full rounded-xl bg-white p-10 shadow-md grid grid-cols-4 gap-4">
+                        <button onclick="infomodel(1)"
+                            class="p-2 aspect-[4/2] border-2 border-black-300 rounded-lg bg-white shadow-lg hover:shadow-2xl flex flex-col items-center justify-center">
+                            <span class="text-2xl font-extrabold text-orange-500">Smile Game 😁</span>
+                            <span class="text-sm font-extrabold text-orange-500">Level 1</span>
+                        </button>
+                        <button onclick="infomodel(2)"
+                            class="p-2 aspect-[4/2] border-2 border-black-300 rounded-lg bg-white shadow-lg hover:shadow-2xl flex flex-col items-center justify-center">
+                            <span class="text-2xl font-extrabold text-orange-500">Smile Game 😁</span>
+                            <span class="text-sm font-extrabold text-orange-500">Level 2</span>
+                        </button>
+                        <button onclick="infomodel(3)"
+                            class="p-2 aspect-[4/2] border-2 border-black-300 rounded-lg bg-white shadow-lg hover:shadow-2xl flex flex-col items-center justify-center">
+                            <span class="text-2xl font-extrabold text-orange-500">Smile Game 😁</span>
+                            <span class="text-sm font-extrabold text-orange-500">Level 3</span>
+                        </button>
+                        <button onclick="infomodel(4)"
+                            class="p-2 aspect-[4/2] border-2 border-black-300 rounded-lg bg-white shadow-lg hover:shadow-2xl  flex flex-col items-center justify-center">
+                            <span class="text-2xl font-extrabold text-orange-500">Smile Game 😁</span>
+                            <span class="text-sm font-extrabold text-orange-500">Level 4</span>
+                        </button>
+                        <button onclick="infomodel(5)"
+                            class="p-2 aspect-[4/2] border-2 border-black-300 rounded-lg bg-white shadow-lg hover:shadow-2xl flex flex-col items-center justify-center">
+                            <span class="text-2xl font-extrabold text-orange-500">Smile Game 😁</span>
+                            <span class="text-sm font-extrabold text-orange-500">Level 5   </span>
+                        </button>
+                        <button onclick="infomodel(6)"
+                            class="p-2 aspect-[4/2] border-2 border-black-300 rounded-lg bg-white shadow-lg hover:shadow-2xl flex flex-col items-center justify-center">
+                            <span class="text-2xl font-extrabold text-orange-500">Smile Game 😁</span>
+                            <span class="text-sm font-extrabold text-orange-500">Level 6</span>
+                        </button>
+                        <button onclick="infomodel(7)"
+                            class="p-2 aspect-[4/2] border-2 border-black-300 rounded-lg bg-white shadow-lg hover:shadow-2xl flex flex-col items-center justify-center">
+                            <span class="text-2xl font-extrabold text-orange-500">Smile Game 😁</span>
+                            <span class="text-sm font-extrabold text-orange-500">Level 7</span>
+                        </button>
+                        <button onclick="infomodel(8)"
+                            class="p-2 aspect-[4/2] border-2 border-black-300 rounded-lg bg-white shadow-lg hover:shadow-2xl flex flex-col items-center justify-center">
+                            <span class="text-2xl font-extrabold text-orange-500">Smile Game 😁</span>
+                            <span class="text-sm font-extrabold text-orange-500">Level 8</span>
+                        </button>
+                        <button onclick="infomodel(9)"
+                            class="p-2 aspect-[4/2] border-2 border-black-300 rounded-lg bg-white shadow-lg hover:shadow-2xl flex flex-col items-center justify-center">
+                            <span class="text-2xl font-extrabold text-orange-500">Smile Game 😁</span>
+                            <span class="text-sm font-extrabold text-orange-500">Level 9</span>
+                        </button>
+                        <button onclick="infomodel(10)"
+                            class="p-2 aspect-[4/2] border-2 border-black-300 rounded-lg bg-white shadow-lg hover:shadow-2xl flex flex-col items-center justify-center">
+                            <span class="text-2xl font-extrabold text-orange-500">Smile Game 😁</span>
+                            <span class="text-sm font-extrabold text-orange-500">Level 10</span>
+                        </button>
+                        <button onclick="infomodel(11)"
+                            class="p-2 aspect-[4/2] border-2 border-black-300 rounded-lg bg-white shadow-lg hover:shadow-2xl flex flex-col items-center justify-center">
+                            <span class="text-2xl font-extrabold text-orange-500">Smile Game 😁</span>
+                            <span class="text-sm font-extrabold text-orange-500">Level 11</span>
+                        </button>
+                        <button onclick="infomodel(12)"
+                            class="p-2 aspect-[4/2] border-2 border-black-300 rounded-lg bg-white shadow-lg hover:shadow-2xl flex flex-col items-center justify-center">
+                            <span class="text-2xl font-extrabold text-orange-500">Smile Game 😁</span>
+                            <span class="text-sm font-extrabold text-orange-500">Level 12</span>
+                        </button>
+                        <button onclick="infomodel(13)"
+                            class="p-2 aspect-[4/2] border-2 border-black-300 rounded-lg bg-white shadow-lg hover:shadow-2xl flex flex-col items-center justify-center">
+                            <span class="text-2xl font-extrabold text-orange-500">Smile Game 😁</span>
+                            <span class="text-sm font-extrabold text-orange-500">Level 13</span>
+                        </button>
+                        <button onclick="infomodel(14)"
+                            class="p-2 aspect-[4/2] border-2 border-black-300 rounded-lg bg-white shadow-lg hover:shadow-2xl flex flex-col items-center justify-center">
+                            <span class="text-2xl font-extrabold text-orange-500">Smile Game 😁</span>
+                            <span class="text-sm font-extrabold text-orange-500">Level 14</span>
+                        </button>
+                        <button onclick="infomodel(15)"
+                            class="p-2 aspect-[4/2] border-2 border-black-300 rounded-lg bg-white shadow-lg hover:shadow-2xl flex flex-col items-center justify-center">
+                            <span class="text-2xl font-extrabold text-orange-500">Smile Game 😁</span>
+                            <span class="text-sm font-extrabold text-orange-500">Level 15</span>
+                        </button>
+                        <button onclick="infomodel(16)"
+                            class="p-2 aspect-[4/2] border-2 border-black-300 rounded-lg bg-white shadow-lg hover:shadow-2xl flex flex-col items-center justify-center">
+                            <span class="text-2xl font-extrabold text-orange-500">Smile Game 😁</span>
+                            <span class="text-sm font-extrabold text-orange-500">Level 16</span>
+                        </button>
+
+
+
+                        <!-- model box -->
+                        
+                    </div>
+                    <!-- <div class="h-56 w-full rounded-xl bg-white p-10 shadow-md"></div> -->
+                </div>
+
+
+    </main>
+</div>
+<!-- /Main -->
+</div>
+</div>
+
+{% endblock content%}

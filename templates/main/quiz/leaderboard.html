@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Landing {% endblock title%}
+{% block content %}
+<div class="bg-slate-200 flex h-screen">
+    
+    {% include 'components/sidebar.html' %}
+    
+    <!-- /Sidebar -->
+
+    <div class="flex h-full w-full flex-col">
+        <!-- Navbar -->
+        
+        {% include 'components/header.html' %}
+        <!-- /Navbar -->
+
+        <!-- Main -->
+        <div class="h-full overflow-hidden pl-10 ">
+            <!-- <main id="dashboard-main" class="h-[calc(100vh-10rem)] overflow-auto px-4 py-10"> -->
+            <main id="dashboard-main" class="h-[calc(100vh-5rem)] overflow-hidden px-4 py-10">
+                {% include 'components/leaderboard.html' %}
+
+            <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50 hidden"
+                id="modal">
+                <div class="absolute top-0 left-0 w-full h-full bg-gray-900 opacity-50"></div>
+                <div class="bg-white rounded p-8 shadow-lg z-50">
+                    <h2 class="text-2xl font-bold mb-4" id="modeltitle"></h2>
+                    <p id="message"></p>
+                    <div class="flex items-center justify-between gap-2">
+                        <button id="closeModal" onclick="startgame()"
+                            class="mt-4 w-full px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">start</button>
+                        <button id="closeModal" onclick="closemodel()"
+                            class="mt-4 w-full px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Close</button>
+                    </div>
+                </div>
+            </div>
+            <!-- model end -->
+            <script>
+                var gamedata = 1
+                const modtitle = document.getElementById('modeltitle')
+                const modmessage = document.getElementById('message')
+                
+                function alertbox(atitle, amessage) {
+                    document.getElementById("modeltitle").innerHTML = atitle;
+                    document.getElementById("message").innerHTML = amessage;
+                    document.getElementById("modal").classList.toggle("hidden");
+                }
+
+                // set cookie
+                function setCookie(name, value, expirationInSeconds, expirationInHours) {
+                    const expirationDate = new Date();
+
+                    if (expirationInSeconds) {
+                        expirationDate.setTime(expirationDate.getTime() + expirationInSeconds * 1000); // Convert seconds to milliseconds
+                    } else if (expirationInHours) {
+                        expirationDate.setTime(expirationDate.getTime() + expirationInHours * 60 * 60 * 1000); // Convert hours to milliseconds
+                    } else {
+                        console.error("Please provide either expirationInSeconds or expirationInHours.");
+                        return;
+                    }
+
+                    const cookieValue = encodeURIComponent(name) + "=" + encodeURIComponent(value) + "; expires=" + expirationDate.toUTCString() + "; path=/";
+                    document.cookie = cookieValue;
+                }
+                // cookie end
+                function startgame() {
+                    console.log(gamedata)
+                    setCookie("gamelevel", gamedata,null, 2);
+                    // location.replace("http://127.0.0.1:5500/home.html");
+                    // location.replace("http://127.0.0.1:5500/test.html");
+                    location.replace("{% url 'play' %}");
+                }
+
+                function infomodel(gamelevel){
+                    gamedata = gamelevel;
+                    console.log(gamelevel);
+                    alertbox("You will have 5 minutes to complete 10 questions!!", "Do you want to start the game");
+                }
+
+                function closemodel(gamelevel) {
+                    // document.getElementById("modal").classList.toggle("hidden");
+                    // document.getElementById("modal").remove();
+
+                    alertbox("", "");
+
+                    // location.reload();
+
+                }
+                function sidebartoggle() {
+                    document.getElementById("asidebox").classList.toggle("hidden");
+                    
+
+                    // location.reload();
+
+                }
+
+            </script>
+    </main>
+</div>
+<!-- /Main -->
+</div>
+</div>
+{% endblock content%}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Landing {% endblock title%}
+{% block content %}
+<div class="bg-slate-200 flex h-screen">
+    
+    {% include 'components/sidebar.html' %}
+    
+    <!-- /Sidebar -->
+
+    <div class="flex h-full w-full flex-col">
+        <!-- Navbar -->
+        
+        {% include 'components/header.html' %}
+        <!-- /Navbar -->
+        
+        <!-- Main -->
+        <div class="h-full overflow-hidden pl-10 ">
+            <!-- <main id="dashboard-main" class="h-[calc(100vh-10rem)] overflow-auto px-4 py-10"> -->
+                <main id="dashboard-main" class="h-[calc(100vh-5rem)] overflow-auto px-4 py-10">
+                {% include 'components/game.html' %}
+              
+                
+           
+           
+    </main>
+</div>
+<!-- /Main -->
+</div>
+</div>
+{% endblock content%}
