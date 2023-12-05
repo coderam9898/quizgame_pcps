@@ -50,7 +50,7 @@ from django.contrib.auth import login, authenticate  # add to imports
 #         return redirect('/')
 
 from django.contrib.auth import logout
-
+from django.contrib import messages
 def logout_view(request):
     logout(request)
     return redirect('/')
@@ -64,6 +64,8 @@ def login_page(request):
         print(email,password)
         user = authenticate(username=email, password=password)
         print(user)
+
+
 
         if user is not None:
             print("user exists")
@@ -79,6 +81,7 @@ def login_page(request):
                 return redirect('game')
         else:
             print("user does not exists")
+            messages.error(request, 'Invalid username or password. Please try again.')
             # Handle invalid login here, e.g., display an error message
             return redirect('/')
             # return render(request, '/', {'error_message': 'Invalid login credentials'})

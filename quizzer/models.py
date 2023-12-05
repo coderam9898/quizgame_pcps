@@ -23,3 +23,12 @@ class GameHistory(models.Model):
 
     def __str__(self) -> str:
         return self.student.email
+    
+
+class GameLevel(models.Model):
+    glevel = models.PositiveSmallIntegerField()
+    total_questions = models.PositiveSmallIntegerField()
+    total_time = models.PositiveSmallIntegerField()
+
+    def __str__(self) -> str:
+        return str(self.glevel)

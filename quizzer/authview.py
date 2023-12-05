@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import redirect, render
+from django.contrib.auth import login, authenticate
 
 @csrf_exempt
 def register_user(request):
@@ -19,6 +20,7 @@ def register_user(request):
                 
             # Check if username, email, and password are provided
             if User.objects.filter(email=email).exists():
+                
                 return JsonResponse({'message': 'User is already registered '}, status=201)
             
             if username and email and password:
@@ -26,9 +28,16 @@ def register_user(request):
                 user = User.objects.create_user(username=username, email=email, password=password)
                 user.save()
 
+                loguser = authenticate(username=username, password=password)
+                print(loguser)
+                if loguser:
+                    print(loguser)
+                    login(request, user)
+                    return redirect('game')
+                else:
                 # Return a success message or any relevant data
                 
-                return JsonResponse({'message': 'User registered successfully'}, status=201)
+                    return JsonResponse({'message': 'User registered successfully'}, status=201)
 
             # Return an error message if username, email, or password is missing
             return JsonResponse({'error': 'Username, email, and password are required'}, status=400)

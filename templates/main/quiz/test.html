@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    {% include 'components/header.html'%}
     <div id="maincon" class="container mx-auto flex min-h-screen flex-col items-center justify-center p-4">
         <h1 class="mb-4 text-2xl font-bold">Quiz Game : Level <span id="gamelevel">1</span> </h1>
         <div class="flex gap-8">
@@ -45,7 +46,7 @@
                 class="aspect-square w-full rounded-2xl border bg-red-400 text-center text-2xl font-bold text-white hover:text-black hover:shadow-lg">9</button>
         </div>
         <!-- <button type="button" id="checkbtn" onclick="test()" class="mt-4 w-full border bg-red-300 p-2 px-4 text-2xl font-extrabold hover:text-green-600" on>Next</button> -->
-        <div class="mt-4 border-2 p-4 text-center hidden"><span class="text-2xl font-extrabold text-green-800">hint:
+        <div class="mt-4 border-2 p-4 text-center "><span class="text-2xl font-extrabold text-green-800">hint:
             </span><span id="options" class="text-2xl font-extrabold text-blue-800"></span></div>
 
         <!-- model box -->
@@ -193,6 +194,14 @@
             count++;
         }
         function des() {
+            const gameActivityData = {
+                    userId: "ramkumar@gmail.com",
+                    score: score,
+                    quizLevel: gml,
+                    // Add more relevant data fields as needed
+                };
+
+            sendGameActivityData(gameActivityData);
             document.getElementById("modal").classList.toggle("hidden");
             location.replace("{% url 'game' %}");
         }
@@ -203,7 +212,7 @@
                 closeModal.classList.toggle('hidden');
                 alertbox("GameOver!!", "Total score : " + " " + score);
                 const gameActivityData = {
-                    userId: "ajay@gmail.com",
+                    userId: "ramkumar@gmail.com",
                     score: score,
                     quizLevel: gml,
                     // Add more relevant data fields as needed
@@ -212,6 +221,7 @@
                 sendGameActivityData(gameActivityData);
                 console.log("gave activity sent")
                 setTimeout(function () {
+                    sendGameActivityData(gameActivityData);
                     location.replace("{% url 'game' %}");
                     // location.replace("http://127.0.0.1:5500/index.html");
                 }, 2000);

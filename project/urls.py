@@ -13,11 +13,18 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path,include
+from quizzer.views import logout_view
 
 urlpatterns = [
+    path('admin/logout/', logout_view, name='admin_logout'),
     path('admin/', admin.site.urls,name='admin'),
     path('',include('quizzer.urls'),name='quizzer'),
-    path('api/',include('quizzer.api.urls'),name='quizapi')
+    path('api/',include('quizzer.api.urls'),name='quizapi'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
