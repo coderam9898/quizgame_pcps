@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n static admin_material %}
+{% block title %} Landing {% endblock title%}
+{% block content %}
+<div class="bg-slate-200 flex h-screen">
+    
+    {% include 'admincomponents/side.html' %}
+    
+    <!-- /Sidebar -->
+
+    <div class="flex h-full w-full flex-col">
+        <!-- Navbar -->
+        
+        {% include 'components/header.html' %}
+        <!-- /Navbar -->
+        
+        <!-- Main -->
+        <div class="h-full overflow-hidden pl-10 ">
+            <!-- <main id="dashboard-main" class="h-[calc(100vh-10rem)] overflow-auto px-4 py-10"> -->
+                <main id="dashboard-main" class="h-[calc(100vh-5rem)] overflow-auto px-4 py-10">
+                    <div class="custom-admin-content">
+                        <h1>Welcome {{request.user.email}}</h1>
+                        <p>This is a custom admin page.</p>
+                        <!-- Access context variables from the default admin template -->
+                        <p>Total models: {{ app_list|length }}</p>
+                        <!-- <p>Total models: {{ app_list}}</p> -->
+                        <p>Total actions: {{ actions|length }}</p>
+                        <!-- <p>{{request.context}}</p> -->
+                       
+
+                        <!-- Add more variables as needed -->
+                    </div>
+                    <div class="timeline timeline-one-side">
+      
+                        
+              
+                
+           
+           
+    </main>
+</div>
+<!-- /Main -->
+</div>
+</div>
+{% endblock content%}

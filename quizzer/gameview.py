@@ -6,6 +6,10 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
 import json
+
+
+
+
 def calculate_user_rank():
     # users = User.objects.all()
     users = User.objects.filter(is_superuser=False, is_staff=False)

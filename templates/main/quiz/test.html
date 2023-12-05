@@ -194,14 +194,14 @@
             count++;
         }
         function des() {
-            const gameActivityData = {
-                    userId: "ramkumar@gmail.com",
-                    score: score,
-                    quizLevel: gml,
-                    // Add more relevant data fields as needed
-                };
+            // const gameActivityData = {
+            //         userId: "ramkumar@gmail.com",
+            //         score: score,
+            //         quizLevel: gml,
+            //         // Add more relevant data fields as needed
+            //     };
 
-            sendGameActivityData(gameActivityData);
+            // sendGameActivityData(gameActivityData);
             document.getElementById("modal").classList.toggle("hidden");
             location.replace("{% url 'game' %}");
         }
@@ -210,7 +210,7 @@
             document.getElementById("modal").classList.toggle("hidden");
             if (gameover) {
                 closeModal.classList.toggle('hidden');
-                alertbox("GameOver!!", "Total score : " + " " + score);
+                alertbox("GameOver!!", "Total score : " + " " + score + " Redirecting to game dashboard");
                 const gameActivityData = {
                     userId: "ramkumar@gmail.com",
                     score: score,
