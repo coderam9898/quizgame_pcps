@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>quizzer package &mdash; Tomato game documentation 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Tomato game documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">quizzer package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-quizzer.admin">quizzer.admin module</a></li>
+<li><a class="reference internal" href="#module-quizzer.apps">quizzer.apps module</a><ul>
+<li><a class="reference internal" href="#quizzer.apps.QuizzerConfig"><code class="docutils literal notranslate"><span class="pre">QuizzerConfig</span></code></a><ul>
+<li><a class="reference internal" href="#quizzer.apps.QuizzerConfig.default_auto_field"><code class="docutils literal notranslate"><span class="pre">QuizzerConfig.default_auto_field</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.apps.QuizzerConfig.name"><code class="docutils literal notranslate"><span class="pre">QuizzerConfig.name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-quizzer.authview">quizzer.authview module</a><ul>
+<li><a class="reference internal" href="#quizzer.authview.register_form"><code class="docutils literal notranslate"><span class="pre">register_form()</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.authview.register_user"><code class="docutils literal notranslate"><span class="pre">register_user()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-quizzer.forms">quizzer.forms module</a><ul>
+<li><a class="reference internal" href="#quizzer.forms.CustomUserCreationForm"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm</span></code></a><ul>
+<li><a class="reference internal" href="#quizzer.forms.CustomUserCreationForm.Meta"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.Meta</span></code></a><ul>
+<li><a class="reference internal" href="#quizzer.forms.CustomUserCreationForm.Meta.fields"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.Meta.fields</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.forms.CustomUserCreationForm.Meta.model"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.Meta.model</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#quizzer.forms.CustomUserCreationForm.base_fields"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.base_fields</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.forms.CustomUserCreationForm.declared_fields"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.declared_fields</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.forms.CustomUserCreationForm.media"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm.media</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-quizzer.gameview">quizzer.gameview module</a><ul>
+<li><a class="reference internal" href="#quizzer.gameview.calculate_user_rank"><code class="docutils literal notranslate"><span class="pre">calculate_user_rank()</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.gameview.get_student_game_history"><code class="docutils literal notranslate"><span class="pre">get_student_game_history()</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.gameview.store_game_history"><code class="docutils literal notranslate"><span class="pre">store_game_history()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-quizzer.models">quizzer.models module</a><ul>
+<li><a class="reference internal" href="#quizzer.models.GameHistory"><code class="docutils literal notranslate"><span class="pre">GameHistory</span></code></a><ul>
+<li><a class="reference internal" href="#quizzer.models.GameHistory.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">GameHistory.DoesNotExist</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.models.GameHistory.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">GameHistory.MultipleObjectsReturned</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.models.GameHistory.gamedate"><code class="docutils literal notranslate"><span class="pre">GameHistory.gamedate</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.models.GameHistory.get_next_by_gamedate"><code class="docutils literal notranslate"><span class="pre">GameHistory.get_next_by_gamedate()</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.models.GameHistory.get_previous_by_gamedate"><code class="docutils literal notranslate"><span class="pre">GameHistory.get_previous_by_gamedate()</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.models.GameHistory.id"><code class="docutils literal notranslate"><span class="pre">GameHistory.id</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.models.GameHistory.level_achieved"><code class="docutils literal notranslate"><span class="pre">GameHistory.level_achieved</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.models.GameHistory.objects"><code class="docutils literal notranslate"><span class="pre">GameHistory.objects</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.models.GameHistory.remarks"><code class="docutils literal notranslate"><span class="pre">GameHistory.remarks</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.models.GameHistory.score"><code class="docutils literal notranslate"><span class="pre">GameHistory.score</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.models.GameHistory.student"><code class="docutils literal notranslate"><span class="pre">GameHistory.student</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.models.GameHistory.student_id"><code class="docutils literal notranslate"><span class="pre">GameHistory.student_id</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.models.GameHistory.total_questions"><code class="docutils literal notranslate"><span class="pre">GameHistory.total_questions</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#quizzer.models.GameLevel"><code class="docutils literal notranslate"><span class="pre">GameLevel</span></code></a><ul>
+<li><a class="reference internal" href="#quizzer.models.GameLevel.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">GameLevel.DoesNotExist</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.models.GameLevel.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">GameLevel.MultipleObjectsReturned</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.models.GameLevel.glevel"><code class="docutils literal notranslate"><span class="pre">GameLevel.glevel</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.models.GameLevel.id"><code class="docutils literal notranslate"><span class="pre">GameLevel.id</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.models.GameLevel.objects"><code class="docutils literal notranslate"><span class="pre">GameLevel.objects</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.models.GameLevel.total_questions"><code class="docutils literal notranslate"><span class="pre">GameLevel.total_questions</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.models.GameLevel.total_time"><code class="docutils literal notranslate"><span class="pre">GameLevel.total_time</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#quizzer.models.studentHistory"><code class="docutils literal notranslate"><span class="pre">studentHistory</span></code></a><ul>
+<li><a class="reference internal" href="#quizzer.models.studentHistory.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">studentHistory.DoesNotExist</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.models.studentHistory.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">studentHistory.MultipleObjectsReturned</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.models.studentHistory.correct_answers"><code class="docutils literal notranslate"><span class="pre">studentHistory.correct_answers</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.models.studentHistory.gamelevel"><code class="docutils literal notranslate"><span class="pre">studentHistory.gamelevel</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.models.studentHistory.id"><code class="docutils literal notranslate"><span class="pre">studentHistory.id</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.models.studentHistory.objects"><code class="docutils literal notranslate"><span class="pre">studentHistory.objects</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.models.studentHistory.student"><code class="docutils literal notranslate"><span class="pre">studentHistory.student</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.models.studentHistory.student_id"><code class="docutils literal notranslate"><span class="pre">studentHistory.student_id</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.models.studentHistory.total_questions"><code class="docutils literal notranslate"><span class="pre">studentHistory.total_questions</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-quizzer.tests">quizzer.tests module</a></li>
+<li><a class="reference internal" href="#module-quizzer.urls">quizzer.urls module</a></li>
+<li><a class="reference internal" href="#module-quizzer.views">quizzer.views module</a><ul>
+<li><a class="reference internal" href="#quizzer.views.cadmin"><code class="docutils literal notranslate"><span class="pre">cadmin()</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.views.game"><code class="docutils literal notranslate"><span class="pre">game()</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.views.history"><code class="docutils literal notranslate"><span class="pre">history()</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.views.index"><code class="docutils literal notranslate"><span class="pre">index()</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.views.leaderboard"><code class="docutils literal notranslate"><span class="pre">leaderboard()</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.views.login_page"><code class="docutils literal notranslate"><span class="pre">login_page()</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.views.logout_view"><code class="docutils literal notranslate"><span class="pre">logout_view()</span></code></a></li>
+<li><a class="reference internal" href="#quizzer.views.play"><code class="docutils literal notranslate"><span class="pre">play()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-quizzer">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Tomato game documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">quizzer package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/quizzer.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="quizzer-package">
+<h1>quizzer package<a class="headerlink" href="#quizzer-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quizzer.api.html">quizzer.api package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quizzer.api.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quizzer.api.html#module-quizzer.api.urls">quizzer.api.urls module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quizzer.api.html#module-quizzer.api.views">quizzer.api.views module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzer.api.html#quizzer.api.views.handle_game_activity"><code class="docutils literal notranslate"><span class="pre">handle_game_activity()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="quizzer.api.html#quizzer.api.views.level"><code class="docutils literal notranslate"><span class="pre">level()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="quizzer.api.html#quizzer.api.views.testlevel"><code class="docutils literal notranslate"><span class="pre">testlevel()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzer.api.html#module-quizzer.api">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quizzer.migrations.html">quizzer.migrations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quizzer.migrations.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quizzer.migrations.html#module-quizzer.migrations.0001_initial">quizzer.migrations.0001_initial module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzer.migrations.html#quizzer.migrations.0001_initial.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzer.migrations.html#quizzer.migrations.0001_initial.Migration.dependencies"><code class="docutils literal notranslate"><span class="pre">Migration.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzer.migrations.html#quizzer.migrations.0001_initial.Migration.initial"><code class="docutils literal notranslate"><span class="pre">Migration.initial</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzer.migrations.html#quizzer.migrations.0001_initial.Migration.operations"><code class="docutils literal notranslate"><span class="pre">Migration.operations</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzer.migrations.html#module-quizzer.migrations.0002_gamehistory">quizzer.migrations.0002_gamehistory module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzer.migrations.html#quizzer.migrations.0002_gamehistory.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzer.migrations.html#quizzer.migrations.0002_gamehistory.Migration.dependencies"><code class="docutils literal notranslate"><span class="pre">Migration.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzer.migrations.html#quizzer.migrations.0002_gamehistory.Migration.operations"><code class="docutils literal notranslate"><span class="pre">Migration.operations</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzer.migrations.html#module-quizzer.migrations.0003_gamelevel">quizzer.migrations.0003_gamelevel module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzer.migrations.html#quizzer.migrations.0003_gamelevel.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzer.migrations.html#quizzer.migrations.0003_gamelevel.Migration.dependencies"><code class="docutils literal notranslate"><span class="pre">Migration.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzer.migrations.html#quizzer.migrations.0003_gamelevel.Migration.operations"><code class="docutils literal notranslate"><span class="pre">Migration.operations</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzer.migrations.html#module-quizzer.migrations">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-quizzer.admin">
+<span id="quizzer-admin-module"></span><h2>quizzer.admin module<a class="headerlink" href="#module-quizzer.admin" title="Link to this heading"></a></h2>
+</section>
+<section id="module-quizzer.apps">
+<span id="quizzer-apps-module"></span><h2>quizzer.apps module<a class="headerlink" href="#module-quizzer.apps" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzer.apps.QuizzerConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quizzer.apps.</span></span><span class="sig-name descname"><span class="pre">QuizzerConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_module</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzer/apps.html#QuizzerConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#quizzer.apps.QuizzerConfig" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AppConfig</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.apps.QuizzerConfig.default_auto_field">
+<span class="sig-name descname"><span class="pre">default_auto_field</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'django.db.models.BigAutoField'</span></em><a class="headerlink" href="#quizzer.apps.QuizzerConfig.default_auto_field" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.apps.QuizzerConfig.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'quizzer'</span></em><a class="headerlink" href="#quizzer.apps.QuizzerConfig.name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quizzer.authview">
+<span id="quizzer-authview-module"></span><h2>quizzer.authview module<a class="headerlink" href="#module-quizzer.authview" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzer.authview.register_form">
+<span class="sig-prename descclassname"><span class="pre">quizzer.authview.</span></span><span class="sig-name descname"><span class="pre">register_form</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzer/authview.html#register_form"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#quizzer.authview.register_form" title="Link to this definition"></a></dt>
+<dd><p>Render register page in the browser</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>request</em>) – receives request parameter</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>renders register page in the browser</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>register page</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzer.authview.register_user">
+<span class="sig-prename descclassname"><span class="pre">quizzer.authview.</span></span><span class="sig-name descname"><span class="pre">register_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzer/authview.html#register_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#quizzer.authview.register_user" title="Link to this definition"></a></dt>
+<dd><p>registers user from the post request , from register page</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>user info</em>) – gets registrations details of the user</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>redirects to game dashboard after login the user</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>redirects to game dashboard</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-quizzer.forms">
+<span id="quizzer-forms-module"></span><h2>quizzer.forms module<a class="headerlink" href="#module-quizzer.forms" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzer.forms.CustomUserCreationForm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quizzer.forms.</span></span><span class="sig-name descname"><span class="pre">CustomUserCreationForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzer/forms.html#CustomUserCreationForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#quizzer.forms.CustomUserCreationForm" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">UserCreationForm</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzer.forms.CustomUserCreationForm.Meta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/quizzer/forms.html#CustomUserCreationForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#quizzer.forms.CustomUserCreationForm.Meta" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.forms.CustomUserCreationForm.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('username',</span> <span class="pre">'email')</span></em><a class="headerlink" href="#quizzer.forms.CustomUserCreationForm.Meta.fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.forms.CustomUserCreationForm.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#quizzer.forms.CustomUserCreationForm.Meta.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">User</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.forms.CustomUserCreationForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'email':</span> <span class="pre">&lt;django.forms.fields.EmailField</span> <span class="pre">object&gt;,</span> <span class="pre">'password1':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'password2':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'username':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#quizzer.forms.CustomUserCreationForm.base_fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.forms.CustomUserCreationForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'password1':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'password2':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#quizzer.forms.CustomUserCreationForm.declared_fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="quizzer.forms.CustomUserCreationForm.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#quizzer.forms.CustomUserCreationForm.media" title="Link to this definition"></a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quizzer.gameview">
+<span id="quizzer-gameview-module"></span><h2>quizzer.gameview module<a class="headerlink" href="#module-quizzer.gameview" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzer.gameview.calculate_user_rank">
+<span class="sig-prename descclassname"><span class="pre">quizzer.gameview.</span></span><span class="sig-name descname"><span class="pre">calculate_user_rank</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzer/gameview.html#calculate_user_rank"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#quizzer.gameview.calculate_user_rank" title="Link to this definition"></a></dt>
+<dd><p>calculates user rank and list them according to their score</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of user ranked based on their score</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>rank records</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzer.gameview.get_student_game_history">
+<span class="sig-prename descclassname"><span class="pre">quizzer.gameview.</span></span><span class="sig-name descname"><span class="pre">get_student_game_history</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzer/gameview.html#get_student_game_history"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#quizzer.gameview.get_student_game_history" title="Link to this definition"></a></dt>
+<dd><p>Gets users game history records</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>user history</em>) – request the logged in user history</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of played games by the user</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>user history records</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzer.gameview.store_game_history">
+<span class="sig-prename descclassname"><span class="pre">quizzer.gameview.</span></span><span class="sig-name descname"><span class="pre">store_game_history</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzer/gameview.html#store_game_history"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#quizzer.gameview.store_game_history" title="Link to this definition"></a></dt>
+<dd><p>stores the user game history</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>post request</em>) – gets user game activity in json format</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>if record is saved returns true else return false</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True or False</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-quizzer.models">
+<span id="quizzer-models-module"></span><h2>quizzer.models module<a class="headerlink" href="#module-quizzer.models" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzer.models.GameHistory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quizzer.models.</span></span><span class="sig-name descname"><span class="pre">GameHistory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzer/models.html#GameHistory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#quizzer.models.GameHistory" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>create GameHistory table in  the database</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>models</strong> (<em>class</em>) – extends models.Model class from django.db module</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>returs database table name and its columns with properties</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>database table</p>
+</dd>
+</dl>
+<dl class="py exception">
+<dt class="sig sig-object py" id="quizzer.models.GameHistory.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#quizzer.models.GameHistory.DoesNotExist" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="quizzer.models.GameHistory.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#quizzer.models.GameHistory.MultipleObjectsReturned" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.models.GameHistory.gamedate">
+<span class="sig-name descname"><span class="pre">gamedate</span></span><a class="headerlink" href="#quizzer.models.GameHistory.gamedate" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzer.models.GameHistory.get_next_by_gamedate">
+<span class="sig-name descname"><span class="pre">get_next_by_gamedate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">gamedate&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quizzer.models.GameHistory.get_next_by_gamedate" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzer.models.GameHistory.get_previous_by_gamedate">
+<span class="sig-name descname"><span class="pre">get_previous_by_gamedate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">gamedate&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quizzer.models.GameHistory.get_previous_by_gamedate" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.models.GameHistory.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#quizzer.models.GameHistory.id" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.models.GameHistory.level_achieved">
+<span class="sig-name descname"><span class="pre">level_achieved</span></span><a class="headerlink" href="#quizzer.models.GameHistory.level_achieved" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.models.GameHistory.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#quizzer.models.GameHistory.objects" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.models.GameHistory.remarks">
+<span class="sig-name descname"><span class="pre">remarks</span></span><a class="headerlink" href="#quizzer.models.GameHistory.remarks" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.models.GameHistory.score">
+<span class="sig-name descname"><span class="pre">score</span></span><a class="headerlink" href="#quizzer.models.GameHistory.score" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.models.GameHistory.student">
+<span class="sig-name descname"><span class="pre">student</span></span><a class="headerlink" href="#quizzer.models.GameHistory.student" title="Link to this definition"></a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.models.GameHistory.student_id">
+<span class="sig-name descname"><span class="pre">student_id</span></span><a class="headerlink" href="#quizzer.models.GameHistory.student_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.models.GameHistory.total_questions">
+<span class="sig-name descname"><span class="pre">total_questions</span></span><a class="headerlink" href="#quizzer.models.GameHistory.total_questions" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzer.models.GameLevel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quizzer.models.</span></span><span class="sig-name descname"><span class="pre">GameLevel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzer/models.html#GameLevel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#quizzer.models.GameLevel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>create GameLevel table in  the database</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>models</strong> (<em>class</em>) – extends models.Model class from django.db module</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>returs database table name and its columns with properties</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>database table</p>
+</dd>
+</dl>
+<dl class="py exception">
+<dt class="sig sig-object py" id="quizzer.models.GameLevel.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#quizzer.models.GameLevel.DoesNotExist" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="quizzer.models.GameLevel.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#quizzer.models.GameLevel.MultipleObjectsReturned" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.models.GameLevel.glevel">
+<span class="sig-name descname"><span class="pre">glevel</span></span><a class="headerlink" href="#quizzer.models.GameLevel.glevel" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.models.GameLevel.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#quizzer.models.GameLevel.id" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.models.GameLevel.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#quizzer.models.GameLevel.objects" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.models.GameLevel.total_questions">
+<span class="sig-name descname"><span class="pre">total_questions</span></span><a class="headerlink" href="#quizzer.models.GameLevel.total_questions" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.models.GameLevel.total_time">
+<span class="sig-name descname"><span class="pre">total_time</span></span><a class="headerlink" href="#quizzer.models.GameLevel.total_time" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzer.models.studentHistory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quizzer.models.</span></span><span class="sig-name descname"><span class="pre">studentHistory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzer/models.html#studentHistory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#quizzer.models.studentHistory" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>create studenthistory table in  the database</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>models</strong> (<em>class</em>) – extends models.Model class from django.db module</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>returs database table name and its columns with properties</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>database table</p>
+</dd>
+</dl>
+<dl class="py exception">
+<dt class="sig sig-object py" id="quizzer.models.studentHistory.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#quizzer.models.studentHistory.DoesNotExist" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="quizzer.models.studentHistory.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#quizzer.models.studentHistory.MultipleObjectsReturned" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.models.studentHistory.correct_answers">
+<span class="sig-name descname"><span class="pre">correct_answers</span></span><a class="headerlink" href="#quizzer.models.studentHistory.correct_answers" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.models.studentHistory.gamelevel">
+<span class="sig-name descname"><span class="pre">gamelevel</span></span><a class="headerlink" href="#quizzer.models.studentHistory.gamelevel" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.models.studentHistory.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#quizzer.models.studentHistory.id" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.models.studentHistory.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#quizzer.models.studentHistory.objects" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.models.studentHistory.student">
+<span class="sig-name descname"><span class="pre">student</span></span><a class="headerlink" href="#quizzer.models.studentHistory.student" title="Link to this definition"></a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.models.studentHistory.student_id">
+<span class="sig-name descname"><span class="pre">student_id</span></span><a class="headerlink" href="#quizzer.models.studentHistory.student_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzer.models.studentHistory.total_questions">
+<span class="sig-name descname"><span class="pre">total_questions</span></span><a class="headerlink" href="#quizzer.models.studentHistory.total_questions" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quizzer.tests">
+<span id="quizzer-tests-module"></span><h2>quizzer.tests module<a class="headerlink" href="#module-quizzer.tests" title="Link to this heading"></a></h2>
+</section>
+<section id="module-quizzer.urls">
+<span id="quizzer-urls-module"></span><h2>quizzer.urls module<a class="headerlink" href="#module-quizzer.urls" title="Link to this heading"></a></h2>
+</section>
+<section id="module-quizzer.views">
+<span id="quizzer-views-module"></span><h2>quizzer.views module<a class="headerlink" href="#module-quizzer.views" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzer.views.cadmin">
+<span class="sig-prename descclassname"><span class="pre">quizzer.views.</span></span><span class="sig-name descname"><span class="pre">cadmin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzer/views.html#cadmin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#quizzer.views.cadmin" title="Link to this definition"></a></dt>
+<dd><p>Redirects and renders custom admin page</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>request</em>) – request the index urls from urls.py file</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>renders custom admin page</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>render</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzer.views.game">
+<span class="sig-prename descclassname"><span class="pre">quizzer.views.</span></span><span class="sig-name descname"><span class="pre">game</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzer/views.html#game"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#quizzer.views.game" title="Link to this definition"></a></dt>
+<dd><p>Redirects and renders the game dashboard page</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>request</em>) – request the game urls from urls.py file</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>renders game dashboard page</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>render</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzer.views.history">
+<span class="sig-prename descclassname"><span class="pre">quizzer.views.</span></span><span class="sig-name descname"><span class="pre">history</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzer/views.html#history"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#quizzer.views.history" title="Link to this definition"></a></dt>
+<dd><p>Gets the user’s game history</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>request</em>) – gets user info from the request</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>returns list of games played by the user</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of user played games</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzer.views.index">
+<span class="sig-prename descclassname"><span class="pre">quizzer.views.</span></span><span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzer/views.html#index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#quizzer.views.index" title="Link to this definition"></a></dt>
+<dd><p>gets request as parameter as render a html page</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>request</em>) – a request for indexpage</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>renders html page in the clients browser</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>html page</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzer.views.leaderboard">
+<span class="sig-prename descclassname"><span class="pre">quizzer.views.</span></span><span class="sig-name descname"><span class="pre">leaderboard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzer/views.html#leaderboard"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#quizzer.views.leaderboard" title="Link to this definition"></a></dt>
+<dd><p>get the leaderboard players data from calculate_user_rank function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>request</em>) – gets user info from the request</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>returns list users ranked based on score</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of users</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzer.views.login_page">
+<span class="sig-prename descclassname"><span class="pre">quizzer.views.</span></span><span class="sig-name descname"><span class="pre">login_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzer/views.html#login_page"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#quizzer.views.login_page" title="Link to this definition"></a></dt>
+<dd><p>Get user’s username and password vai post request and validates user and login the user</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>username</em><em> , </em><em>password</em>) – get username and password via post request</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>login the user and creates a user session</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>login user</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzer.views.logout_view">
+<span class="sig-prename descclassname"><span class="pre">quizzer.views.</span></span><span class="sig-name descname"><span class="pre">logout_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzer/views.html#logout_view"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#quizzer.views.logout_view" title="Link to this definition"></a></dt>
+<dd><p>Logout’s user from the session and destroys the session cookie from the clients computer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>request</em>) – gets user data from request and destroys the user session</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>destroys the user session</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>logouts user</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzer.views.play">
+<span class="sig-prename descclassname"><span class="pre">quizzer.views.</span></span><span class="sig-name descname"><span class="pre">play</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzer/views.html#play"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#quizzer.views.play" title="Link to this definition"></a></dt>
+<dd><p>Renders the game page where users play the game</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>request</em>) – gets the request from urls</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>users play the game in game page</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>renders page</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-quizzer">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-quizzer" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Ramkumar Mahato 2022814.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

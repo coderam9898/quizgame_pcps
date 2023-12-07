@@ -8,6 +8,14 @@ from django.contrib import messages
 
 @csrf_exempt
 def register_user(request):
+    """ registers user from the post request , from register page
+
+    Args:
+        request (user info): gets registrations details of the user
+
+    Returns:
+        redirects to game dashboard: redirects to game dashboard after login the user
+    """
     if request.method == 'POST':
         try:
             # Extract user data from the form
@@ -57,4 +65,12 @@ def register_user(request):
     return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
 
 def register_form(request):
+    """Render register page in the browser
+
+    Args:
+        request (request): receives request parameter
+
+    Returns:
+        register page: renders register page in the browser
+    """
     return render(request,'main/quiz/register.html',{})

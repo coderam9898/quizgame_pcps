@@ -7,6 +7,14 @@ from django.contrib import messages
 from .gameview import calculate_user_rank,get_student_game_history
 # Create your views here.
 def index(request):
+    """ gets request as parameter as render a html page
+
+    Args:
+        request (request): a request for indexpage
+
+    Returns:
+        html page: renders html page in the clients browser
+    """
     if request.user.is_authenticated and request.user.is_superuser:
         return redirect('admin:index')
     elif request.user.is_authenticated and not request.user.is_superuser:
@@ -15,21 +23,61 @@ def index(request):
     # return redirect('game')
 
 def cadmin(request):
+    """ Redirects and renders custom admin page
+
+    Args:
+        request (request): request the index urls from urls.py file
+
+    Returns:
+        render : renders custom admin page
+    """
     return render (request,'dashboard/index.html',{})
 
 def game(request):
+    """ Redirects and renders the game dashboard page
+
+    Args:
+        request (request): request the game urls from urls.py file
+
+    Returns:
+        render : renders game dashboard page
+    """
     # return render (request,'main/quiz/userdash.html',{})
     return render (request,'main/quiz/landing.html',{})
     # return render (request,'main/quiz/index.html',{})
 
 def play(request):
+    """Renders the game page where users play the game
+
+    Args:
+        request (request): gets the request from urls
+
+    Returns:
+        renders page: users play the game in game page
+    """
     return render (request,'main/quiz/test.html',{})
 
 def logout_view(request):
+    """Logout's user from the session and destroys the session cookie from the clients computer
+
+    Args:
+        request (request): gets user data from request and destroys the user session
+
+    Returns:
+         logouts user: destroys the user session
+    """
     logout(request)
     return redirect('/')
 
 def login_page(request):
+    """Get user's username and password vai post request and validates user and login the user
+
+    Args:
+        request (username , password): get username and password via post request
+
+    Returns:
+        login user: login the user and creates a user session
+    """
     try:
         if request.method == 'POST':
             email = request.POST['username']
@@ -68,12 +116,28 @@ def login_page(request):
 
 
 def leaderboard(request):
+    """get the leaderboard players data from calculate_user_rank function
+
+    Args:
+        request (request): gets user info from the request
+
+    Returns:
+        list of users: returns list users ranked based on score
+    """
     ranked_users = calculate_user_rank()
     print(ranked_users)
     print("leaderboard")
     return render(request,'main/quiz/leaderboard.html',{'ranked_users': ranked_users})
 
 def history(request):
+    """Gets the user's game history
+
+    Args:
+        request (request): gets user info from the request
+
+    Returns:
+        list of user played games: returns list of games played by the user
+    """
     print("history")
     history = get_student_game_history(request)
     print(history)

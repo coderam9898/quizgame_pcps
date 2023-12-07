@@ -6,11 +6,27 @@ from quizzer.models import GameHistory
 from django.utils import timezone
 
 def level(request):
+    """ made a hello world program to test the initial setup of the django project
+
+    Args:
+        request (request): receives request parameter
+
+    Returns:
+        httpresponse: returns hello as httpresponse
+    """
     return HttpResponse("hello")
     
 
 @csrf_exempt  # Disable CSRF protection for simplicity. In a production environment, handle CSRF properly.
 def handle_game_activity(request):
+    """ stores the user game activity in gamehistory table
+
+    Args:
+        request (post request): gets user game activity in json format
+
+    Returns:
+        True or False: if record is saved returns true else return false
+    """
     if request.method == 'POST':
         try:
             # Parse the JSON data from the request
@@ -50,6 +66,15 @@ def handle_game_activity(request):
 
 @csrf_exempt
 def testlevel(request):
+    """ gets post request from frontend with game data made for testing
+
+    Args:
+        request (user , level , correct, active , totalquestions): gets these from the post request
+
+    Returns:
+        json data: maps all the the provided data from post request into json formate and returns it
+    """
+
     if request.method == 'POST':
         user = request.POST.get('user')
         level = request.POST.get('level')

@@ -1,5 +1,8 @@
 from django.urls import path
 from .import views,authview
+"""
+    All the urls triggering function are defined in this urls.py file
+"""
 urlpatterns = [
     path('',views.index, name='index'),
     path('cadmin',views.cadmin, name='cadmin'),

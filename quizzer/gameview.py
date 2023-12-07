@@ -11,6 +11,11 @@ import json
 
 
 def calculate_user_rank():
+    """ calculates user rank and list them according to their score
+
+    Returns:
+        rank records: list of user ranked based on their score
+    """
     # users = User.objects.all()
     users = User.objects.filter(is_superuser=False, is_staff=False)
     ranked_users = []
@@ -31,7 +36,16 @@ def calculate_user_rank():
     return ranked_users
 
 
-def get_student_game_history(request):  
+def get_student_game_history(request):
+    """Gets users game history records
+
+    Args:
+        request (user history): request the logged in user history
+
+    Returns:
+        user history records: list of played games by the user
+    """
+      
     history = GameHistory.objects.filter(student=request.user).order_by('-gamedate').values()
     return history
 
@@ -39,6 +53,14 @@ def get_student_game_history(request):
 
 @csrf_exempt
 def store_game_history(request):
+    """ stores the user game history
+
+    Args:
+        request (post request): gets user game activity in json format
+
+    Returns:
+        True or False: if record is saved returns true else return false
+    """
     if request.method == 'POST':
         try:
             data = json.loads(request.body.decode('utf-8'))
